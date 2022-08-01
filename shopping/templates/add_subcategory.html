@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<body>
+
+  <!-- preloader start -->
+  <div class="preloader">
+    <img src="{% static 'images/preloader.gif' %}" alt="preloader">
+  </div>
+  <!-- preloader end -->
+
+<section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="block text-center">
+          <a class="logo" href="index-2.html">
+            <img src="{% static 'images/logo.png' %}" alt="logo">
+          </a>
+          <h2 class="text-center">Add Subcategory</h2>
+
+          <form class="text-left clearfix" action="" method="POST" >
+            {% csrf_token %}
+            <div class="form-group">
+              <label >Select  Category</label>
+               {{form.cat}}
+            </div>
+            <br>
+            <div class="form-group">
+              <label >add subcategory</label>
+              {{form.name}}
+            </div>
+            <br>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">add subcategory</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+{% endblock %}
+<!-- /main wrapper -->
+
+<!-- jQuery -->

@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- /breadcrumb -->
+
+
+<section class="user-dashboard section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-inline dashboard-menu text-center">
+					<li class="list-inline-item"><a class="{{class1}}" href="{% url 'dashboard' 'AllOrder' %}">Dashboard</a></li>
+					<li class="list-inline-item"><a class="{{class2}}" href="{% url 'dashboard' 'PendingOrder' %}">Orders</a></li>
+					<li class="list-inline-item"><a class="{{class3}}" href="{% url 'dashboard' 'AddressList' %}">Address</a></li>
+					<li class="list-inline-item"><a class="{{class4}}" href="{% url 'dashboard' 'Profile' %}">Profile Details</a></li>
+				</ul>
+				{% if type == 'AllOrder' %}
+				<div class="dashboard-wrapper user-dashboard">
+					<div class="total-order mt-4">
+						<h4>Total Orders</h4>
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>order_id</th>
+										<th>Date</th>
+										<th>items</th>
+										<th>total price</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for i in allorder %}
+									<tr>
+										<td><a href="#">{{i.order_detail.order_id}}</a></td>
+										<td>{{i.expected_date}}</td>
+										<td>{{i.quantity}}</td>
+										<td>&#8377;{{i.totalprice}}</td>
+									</tr>
+								{% endfor %}
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					{% endif %}
+
+				    {% if type == 'PendingOrder' %}
+					<div class="dashboard-wrapper user-dashboard">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Order ID</th>
+									<th>Date</th>
+									<th>Items</th>
+									<th>Total Price</th>
+									<th>Status</th>
+									<th>Track</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for i in pending_order %}
+								<tr>
+									<td>{{i.order_detail.order_id}}</td>
+									<td>{{i.expected_date}}</td>
+									<td>{{i.quantity}}</td>
+									<td>&#8377;{{i.totalprice}}</td>
+									<td><span class="badge badge-primary">{{i.status}}</span></td>
+									<td><button class="" ><a href="{% url 'track' i.id %}" class="btn btn-sm btn-outline-primary btn btn-small">track_order</a></button></td>
+								</tr>
+							{% endfor %}
+
+
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+					{% endif %}
+		       {% if type == 'Profile' %}
+						<div class="dashboard-wrapper dashboard-user-profile">
+                         <div class="media">
+                            <div class="text-center">
+								<img class="media-object user-img" src="" alt="Image">
+                               <a href="#" class="btn btn-sm mt-3 d-block">Change Image</a>
+							</div>
+                        <div class="media-body align-self-center">
+							<h2 class="media-heading">Welcome {{profile_detail.usr.first_name}} {{ profile_detail.usr.last_name }}</h2>
+							<h2 class="media-heading">Mobile Number:  {{ profile_detail.mobile }}</h2>
+							<h2 class="media-heading">Email:  {{ profile_detail.usr.email }}</h2>
+							<h2 class="media-heading">Address:  {{ profile_detail.address }}</h2>
+							</div>
+                          </div>
+                          </div>
+					{% endif %}
+
+	{% if type == "AddressList" %}
+
+					<div class="dashboard-wrapper user-dashboard">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>fullname</th>
+                  <th> house_no</th>
+                  <th>area_name</th>
+                  <th>city_state</th>
+                  <th> landmark</th>
+                </tr>
+              </thead>
+              <tbody>
+			  {% for i in checkout_detail %}
+                <tr>
+                  <td>{{i.fullname}}</td>
+                  <td>{{i.house_no}}</td>
+                  <td>{{i.area_name}}</td>
+                  <td>{{i.city_state}}</td>
+                  <td>{{i.landmark}}</td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-sm btn-outline-primary"><i class="ti-pencil" aria-hidden="true"></i></button>
+                      <button type="button" class="btn btn-sm btn-outline-primary"><i class="ti-close" aria-hidden="true"></i></button>
+                    </div>
+                  </td>
+                </tr>
+			  {% endfor %}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+					{% endif %}
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+
+
