@@ -14,18 +14,18 @@ this website is developed using python django...you can download this project an
 5)they can track thier record
 
 6) they have their dashboard 
-7) 
+
 #features of admin user
 
 1) they can add product,add category,add subcategory.
-2) 
-3)they can edit product,edit category,edit subcategory.
+ 
+2)they can edit product,edit category,edit subcategory.
 
-4)they can change the status order
+3)they can change the status order
 
-5)they can access all order product.
+4)they can access all order product.
 
-6)they can delete product,category,subcategory
+5)they can delete product,category,subcategory
 
 # some screenshot of my ecommerce website
 
